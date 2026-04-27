@@ -3,7 +3,6 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <sys/wait.h>
 
 #define FILE_NAME "./ejecutable"
 #define ARG_CAN     6
