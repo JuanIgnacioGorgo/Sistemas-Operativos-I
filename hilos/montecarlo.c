@@ -50,7 +50,7 @@ int main(){
 
     aciertos = l1 -> cant_aciertos + l2 -> cant_aciertos + l3 -> cant_aciertos + l4 -> cant_aciertos;
 
-    printf("\naprox. PI = (%1.6lf)", aciertos * 1.0 / (CANT_LANZAMIENTOS * APROX_MULTIPLIER));
+    printf("\naprox. PI = (%1.6lf)\n", aciertos * 1.0 / (CANT_LANZAMIENTOS * APROX_MULTIPLIER));
 
     free(l1);
     free(l2);
