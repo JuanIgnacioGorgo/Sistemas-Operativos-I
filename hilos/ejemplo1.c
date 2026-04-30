@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <pthread.h>
 
+// para compilar y correr
+// gcc -pthread -o ejercicio && ./ejercicio
+
 void * hola(void * a){
     printf("hola mundo\n");
 }

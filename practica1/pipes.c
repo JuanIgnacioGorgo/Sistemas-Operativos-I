@@ -9,8 +9,8 @@
 
 #define MAX_SIZE 20
 
-int FD_READ ;
-int FD_WRITE;
+unsigned FD_READ ;
+unsigned FD_WRITE;
 
 void rut_parent(pid_t child_id);
 void rut_child(pid_t parent_id);
