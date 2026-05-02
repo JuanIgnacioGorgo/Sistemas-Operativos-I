@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 // para compilar y correr:
-// clear && gcc -pthread jardin.c -o ejercicio && ./ejercicio 2000
+// clear && gcc -pthread jardinConPeterson.c -o ejercicio && ./ejercicio 2000
 
 //  VARIABLES DE TESTING
 unsigned TEST_NUM = 20;
@@ -17,8 +17,8 @@ unsigned ING_NUM;
 unsigned TOT_NUM;
 
 //  FLAGS
-unsigned LOCK_FLAG = 0;
-
+unsigned TURN_NUM = 0;
+unsigned READY_FLAGS[2];
 
 void molinete1(void);
 void molinete2(void);
@@ -52,20 +52,26 @@ int main(int argc, char * argv[]){
 
 void molinete1(void){
     for(unsigned idx = TOT_NUM / 2; idx ; usleep(100), --idx){
-        while(LOCK_FLAG){ ++CPM1_NUM; }
-        LOCK_FLAG = 1;
+        READY_FLAGS[0] = 1;
+        TURN_NUM = 2;
+        while(READY_FLAGS[1] && TURN_NUM == 2){ ++CPM1_NUM; }
+        // Seccion Critica
         printf("[M1] Ingreso n°%d\n", ++ING_NUM);
-        LOCK_FLAG = 0;
+        //
+        READY_FLAGS[0] = 0;
     }
 
     return;
 }
 void molinete2(void){
     for(unsigned idx = TOT_NUM / 2; idx ; usleep(100), --idx){
-        while(LOCK_FLAG){ ++CPM2_NUM; }
-        LOCK_FLAG = 1;
+        READY_FLAGS[1] = 1;
+        TURN_NUM = 1;
+        while(READY_FLAGS[0] && TURN_NUM == 1){ ++CPM2_NUM; }
+        // Seccion Critca
         printf("[M2] Ingreso n°%d\n", ++ING_NUM);
-        LOCK_FLAG = 0;
+        //
+        READY_FLAGS[1] = 0;
     }
 
     return;
