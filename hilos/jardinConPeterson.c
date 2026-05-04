@@ -54,6 +54,7 @@ void molinete1(void){
     for(unsigned idx = TOT_NUM / 2; idx ; usleep(100), --idx){
         READY_FLAGS[0] = 1;
         TURN_NUM = 2;
+        //asm("mfence");
         while(READY_FLAGS[1] && TURN_NUM == 2){ ++CPM1_NUM; }
         // Seccion Critica
         printf("[M1] Ingreso n°%d\n", ++ING_NUM);
@@ -67,6 +68,7 @@ void molinete2(void){
     for(unsigned idx = TOT_NUM / 2; idx ; usleep(100), --idx){
         READY_FLAGS[1] = 1;
         TURN_NUM = 1;
+        //asm("mfence");
         while(READY_FLAGS[0] && TURN_NUM == 1){ ++CPM2_NUM; }
         // Seccion Critca
         printf("[M2] Ingreso n°%d\n", ++ING_NUM);

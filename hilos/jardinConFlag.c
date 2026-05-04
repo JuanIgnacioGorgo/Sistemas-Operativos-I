@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 // para compilar y correr:
-// clear && gcc -pthread jardinConFlag.c -o ejercicio && ./ejercicio 2000
+//  clear && gcc -pthread jardinConFlag.c -o ejercicio && ./ejercicio 2000
 
 //  VARIABLES DE TESTING
 unsigned TEST_NUM = 20;
